@@ -1,0 +1,32 @@
+[user]
+	name = aspasia
+	email = aspasia.beneti@gmail.com
+[diff]
+	tool = diffmerge
+	external = /Users/aspasiabeneti/bin/git-diff-cmd.sh
+[merge]
+	tool = diffmerge
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[color]
+ui = true
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
+[core]
+	editor = vim
+	excludesfile = /Users/aspasiabeneti/.gitignore
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
